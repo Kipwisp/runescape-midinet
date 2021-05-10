@@ -1,0 +1,12 @@
+# Folders
+__pycache__
+midinet_model
+checkpoints
+dataset
+output
+logs
+
+# File types
+*.midi
+*.mid
+*.npy
