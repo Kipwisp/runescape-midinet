@@ -89,7 +89,7 @@ def create_midi(input_, path='output'):
     print(f'Generated MIDI file saved as \'{file_name}.\'')
 
 
-def generate(song_length, topk, save_dir, inclusive):
+def generate(song_length, top_k, save_dir, inclusive):
     with open('parameters.json') as f:
         params = json.load(f)
 
@@ -107,14 +107,14 @@ def generate(song_length, topk, save_dir, inclusive):
     starting = [params['vocab_size']-1 for i in range(params['sequence_length'] - starting_length)] + starting
 
     padding_token = params['vocab_size'] - 1
-    result = generate_notes(model, starting, song_length, topk, inclusive, padding_token)
+    result = generate_notes(model, starting, song_length, top_k, inclusive, padding_token)
     create_midi(result)
 
 
 def main():
     parser = argparse.ArgumentParser(description='Generate a MIDI file using a model.')
-    parser.add_argument('-l', '--length', default=3000, type=int, help='the number of tokens to be generated')
-    parser.add_argument('-k', '--top_k', default=7, type=int, help='k value for selecting top K predictions')
+    parser.add_argument('-l', '--length', default=2500, type=int, help='the number of tokens to be generated')
+    parser.add_argument('-k', '--top_k', default=8, type=int, help='k value for selecting top K predictions')
     parser.add_argument('-s', '--save_directory', default='midinet_model', type=str, help='the directory to load the model from')
     parser.add_argument('--inclusive', action='store_true', help='include the seed data in the MIDI file')
 
