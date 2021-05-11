@@ -8,6 +8,14 @@ This model can be ran on Google Colab. To do so, simply upload the repository to
 open up `midinet_notebook.ipynb` in Google Colab and follow the instructions in the notebook.
 
 
+## Installing Dependencies
+
+Run the following command to install the required dependencies using pip:
+```
+    pip install tensorflow mido
+```
+
+
 ## Trained Model
 
 Midinet was trained on the [Lahk MIDI Dataset](https://colinraffel.com/projects/lmd/) for 250 epochs and then on the [Runescape OST](https://www.youtube.com/watch?v=lY4nX5e1ipA) (provided by Runescape Reorchestrated) for 50 epochs. 
