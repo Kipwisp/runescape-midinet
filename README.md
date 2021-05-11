@@ -30,7 +30,7 @@ The model had the following parameters (excluding the dataset):
 ```
 
 ## Downloading the Trained Model
-If you wish to skip the training process, then the trained model can be downloaded from [Mega](https://mega.nz/folder/6qwgzBhD#T52qv8gT8Muf42G9qFr44Q). After downloading, extract the contents of the zip to `midinet_model_trained` - then simply move it to the root directory of this project.
+If you wish to skip the training process, then the trained model can be downloaded from releases found [here](https://github.com/Kipwisp/runescape-midinet/releases/download/1.0/midinet_model_trained.zip). After downloading, extract the contents of the zip to `midinet_model_trained` - then simply move it to the root directory of this project.
 
 Make sure to change `parameters.json` to match the trained model parameters specified above if you are using this model for inference.
 
