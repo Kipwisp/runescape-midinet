@@ -48,8 +48,9 @@ Make sure to change `parameters.json` to match the trained model parameters spec
 
 ## Music Samples
 
-A playlist containing music samples generated from the trained model can be found on [Soundcloud](https://soundcloud.com/kipwisp/sets/midinet-music-generator).
+A playlist containing some of the best music samples generated from the trained model can be found on [Soundcloud](https://soundcloud.com/kipwisp/sets/midinet-music-generator).
 
+Though the model is not perfect and may run into issues of incoherency, repetition, and silence at times - it appears to be quite capable of replicating the general theme of the sample seed it is given while retaining musical structure.
 
 ## Graphs
 These graphs show the results from training the model for 250 epochs on the Lahk Dataset.
