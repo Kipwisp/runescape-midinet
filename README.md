@@ -4,6 +4,8 @@ This project is heavily inspired by the works of [Music Transformer](https://mag
 
 Inside the inner workings of this model is an attention-based neural network that utilizes the memory efficient relative attention algorithm described by authors of Music Transformer. If you are interested in learning more about this, be sure to look at the [Music Transformer paper](https://arxiv.org/abs/1809.04281).
 
+## Running on Google Colab
+
 This model can be ran on Google Colab. To do so, simply upload the repository to your Google Drive. Then
 open up `midinet_notebook.ipynb` in Google Colab and follow the instructions in the notebook.
 
