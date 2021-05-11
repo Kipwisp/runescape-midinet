@@ -50,7 +50,7 @@ def train(num_epochs, save_dir, restore):
 
     model.fit(x=train_split, epochs=num_epochs, batch_size=batch_size, validation_data=validation_split, callbacks=callbacks)
 
-    print(f'Tensorboard logs can be found under \'{log_dir}\'.')
+    print(f'TensorBoard logs can be found under \'{log_dir}\'.')
 
     best_manager.restore_or_initialize()
     print(f'Saving model as \'{save_dir}\'.')
