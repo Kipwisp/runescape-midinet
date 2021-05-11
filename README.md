@@ -1,6 +1,6 @@
 # Runescape Midinet: Runescape Music Generator
 Runescape Midinet is deep learning model that has been trained with purpose of replicating the soundtrack from the MMORPG called Runescape. 
-This project is heavily inspired by the works of [Music Transformer](https://magenta.tensorflow.org/music-transformer), an neural network that generates piano music. This project expands upon this to create a model that can utilize multiple instruments within a song.
+This project is heavily inspired by the works of [Music Transformer](https://magenta.tensorflow.org/music-transformer), a neural network that generates piano music. This project expands upon this to create a model that can utilize multiple instruments within a song.
 
 Inside the inner workings of this model is an attention-based neural network that utilizes the memory efficient relative attention algorithm described by authors of Music Transformer. If you are interested in learning more about this, be sure to look at the [Music Transformer paper](https://arxiv.org/abs/1809.04281).
 
