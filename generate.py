@@ -6,7 +6,7 @@ import math
 import json
 import argparse
 import os
-import utils.dataset as dataset
+import utils.dataset as dataset_utils
 from tqdm import tqdm
 from datetime import datetime
 
@@ -86,20 +86,20 @@ def create_midi(input_, path='output'):
 
     file_name = f'{path}/{datetime.now().strftime("%d-%b-%Y_%H.%M.%S")}.mid'
     midi.save(file_name)
-    print(f'Generated MIDI file saved as \'{file_name}.\'')
+    print(f'Generated MIDI file saved as \'{file_name}\'.')
 
 
-def generate(song_length, top_k, save_dir, inclusive):
+def generate(song_length, top_k, save_dir, dataset, inclusive):
     with open('parameters.json') as f:
         params = json.load(f)
 
     try:
         model = tf.keras.models.load_model(save_dir)
     except:
-        print(f'Could not find the saved model \'{save_dir}.\'')
+        print(f'Could not find the saved model \'{save_dir}\'.')
         exit()
 
-    data = dataset.load_dataset()
+    data = dataset_utils.load_dataset(dataset)
 
     starting_length = 512
     random_song = random.choice(data)
@@ -116,10 +116,11 @@ def main():
     parser.add_argument('-l', '--length', default=2500, type=int, help='the number of tokens to be generated')
     parser.add_argument('-k', '--top_k', default=8, type=int, help='k value for selecting top K predictions')
     parser.add_argument('-s', '--save_directory', default='midinet_model', type=str, help='the directory to load the model from')
+    parser.add_argument('-d', '--dataset', type=str, help='the directory containing the dataset to draw a starting seed from')
     parser.add_argument('--inclusive', action='store_true', help='include the seed data in the MIDI file')
 
     args = parser.parse_args()
-    generate(args.length, args.top_k, args.save_directory, args.inclusive)
+    generate(args.length, args.top_k, args.save_directory, args.dataset, args.inclusive)
 
 
 if __name__ == "__main__":

@@ -7,6 +7,5 @@
     "feed_forward_dim": 1024,
     "dropout": 0.10,
     "learning_rate": 0.0001,
-    "batch_size": 2,
-    "dataset": "rs_ost"
+    "batch_size": 2
 }

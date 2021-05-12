@@ -89,14 +89,13 @@ class SequenceGenerator(tf.keras.utils.Sequence) :
         return inputs, targets
 
 
-def load_dataset():
-    with open('parameters.json') as f:
-        params = json.load(f)
-
+def load_dataset(dataset):
     data = []
-    path = f'{params["dataset"]}/data.npy'
+    path = f'{dataset}/data.npy'
     with open(path, 'rb') as f:
         data = np.load(f, allow_pickle=True)
+    
+    print(f'Using dataset \'{dataset}.\'')
     
     return data
 

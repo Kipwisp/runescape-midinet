@@ -1,7 +1,7 @@
 import argparse
 import tensorflow as tf
 import model.model as models
-import utils.dataset as dataset
+import utils.dataset as dataset_utils
 from datetime import datetime
 
 class CheckpointCallback(tf.keras.callbacks.Callback):
@@ -22,11 +22,11 @@ class CheckpointCallback(tf.keras.callbacks.Callback):
         print(f'Current best val_loss: {self.best_loss:.4f}')
 
 
-def train(num_epochs, save_dir, restore):
-    data = dataset.load_dataset()
+def train(num_epochs, save_dir, dataset, restore):
+    data = dataset_utils.load_dataset(dataset)
 
     split = 0.1
-    train_split, validation_split, batch_size = dataset.create_generator_and_validation(data, split)
+    train_split, validation_split, batch_size = dataset_utils.create_generator_and_validation(data, split)
     model, optimizer, loss_function = models.create_model()
 
     max_to_keep = 25
@@ -61,10 +61,11 @@ def main():
     parser = argparse.ArgumentParser(description='Train the model on a dataset.')
     parser.add_argument('-e', '--epochs', type=int, help='the number of epochs to train for')
     parser.add_argument('-s', '--save_directory', default='midinet_model', type=str, help='the directory to save the model to')
+    parser.add_argument('-d', '--dataset', type=str, help='the directory containing the dataset to train on')
     parser.add_argument('--restore', action='store_true', help='restore from the last checkpoint')
 
     args = parser.parse_args()
-    train(args.epochs, args.save_directory, args.restore)
+    train(args.epochs, args.save_directory, args.dataset, args.restore)
 
 if __name__ == "__main__":
     main()

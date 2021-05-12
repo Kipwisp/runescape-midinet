@@ -22,7 +22,7 @@ Run the following command to install the required dependencies using pip:
 
 Midinet was trained on the [Lahk MIDI Dataset](https://colinraffel.com/projects/lmd/) for 250 epochs and then on the [Runescape OST](https://www.youtube.com/watch?v=lY4nX5e1ipA) (provided by Runescape Reorchestrated) for 50 epochs. 
 
-The model had the following parameters (excluding the dataset):
+The trained model has the following parameters:
 
 ```
 {
@@ -35,7 +35,6 @@ The model had the following parameters (excluding the dataset):
     "dropout": 0.10,
     "learning_rate": 0.0001,
     "batch_size": 2,
-    "dataset": ---
 }
 ```
 
@@ -118,25 +117,25 @@ The following parameters can be adjusted:
 * **dropout**: the dropout rate
 * **learning_rate**: the learning rate
 * **batch_size**: the batch size used during training
-* **dataset**: the dataset that will be used for training and inference
 
 
 ## Training
-To begin training the model simply run the `train.py` script. TensorBoard graphs to track loss and accuracy can be under `logs`. After training is finished, the model will be saved to the directory specified by `save_directory`.
+To begin training the model simply run the `train.py` script like shown below. TensorBoard graphs to track loss and accuracy can be under `logs`. After training is finished, the model will be saved to the directory specified by `save_directory`.
 
 ```
-python train.py -e 5 -s midinet_model
+python train.py -e 5 -s midinet_model -d rs_ost
 ```
 
 The `train.py` script takes in the following arguments:
 * **--epochs (-e)**: number of epochs to train the model for
 * **--save_directory (-s)**: the directory the model will be saved to
+* **--dataset (-d)**: the directory containing the dataset to train on
 * **--restore****: will restore from the latest checkpoint if given as an argument
 
 ## Inference
 After training, we can use the model for inference to generate MIDI music.
 
-The model will be given random samples from the dataset specified in `parameters.json` as the seed to begin inference with. If you wish to draw samples from a different dataset for inference, simply change the dataset parameter in `parameters.json`.
+The model will be given random samples from the dataset as the seed to begin inference with.
 
 To generate some music, simply run the `generate.py` script like shown below. The model that will be used for inference is specified by `save_directory`.
 
@@ -145,19 +144,20 @@ After it finishes, the generated MIDI will be saved under the `output` directory
 (note: make sure the sequence length specified in model parameters matches the sequence length for the model being used)
 
 ```
-python generate.py -l 2500 -k 8 -s midinet_model
+python generate.py -l 2500 -k 8 -s midinet_model -d rs_ost
 ```
 
 If you downloaded the trained model, then you will most likely want to use the command below instead assuming you moved the downloaded model directory to the project root folder and named it `midinet_model_trained`.
 ```
-python generate.py -l 2500 -k 8 -s midinet_model_trained
+python generate.py -l 2500 -k 8 -s midinet_model_trained -d rs_ost
 ```
 
 The `generate.py` script takes in the following arguments:
-* **length (l)**: the number of song tokens to be generated
-* **top_k (k)**: the k value for selecting top k predictions
-* **save_directory (s)**: the directory to load the saved model from
-* **inclusive**: will include the seed as part of the generated MIDI when given as an argument
+* **--length (l)**: the number of song tokens to be generated
+* **--top_k (k)**: the k value for selecting top k predictions
+* **--save_directory (s)**: the directory to load the saved model from
+* **--dataset (-d)**: the directory containing the dataset to draw a starting seed from
+* **--inclusive**: will include the seed as part of the generated MIDI when given as an argument
 
   
 ## Dependencies
