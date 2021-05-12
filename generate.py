@@ -100,13 +100,13 @@ def generate(song_length, top_k, save_dir, dataset, inclusive):
         exit()
 
     data = dataset_utils.load_dataset(dataset)
+    padding_token = params['vocab_size'] - 1
 
     starting_length = 512
     random_song = random.choice(data)
     starting = random_song[:starting_length]
-    starting = [params['vocab_size']-1 for i in range(params['sequence_length'] - starting_length)] + starting
+    starting = [padding_token for i in range(params['sequence_length'] - starting_length)] + starting
 
-    padding_token = params['vocab_size'] - 1
     result = generate_notes(model, starting, song_length, top_k, inclusive, padding_token)
     create_midi(result)
 
