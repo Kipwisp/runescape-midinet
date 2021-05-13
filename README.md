@@ -14,7 +14,7 @@ open up `midinet_notebook.ipynb` in Google Colab and follow the instructions in 
 
 Run the following command to install the required dependencies using pip:
 ```
-    pip install tensorflow mido
+pip install tensorflow mido
 ```
 
 
