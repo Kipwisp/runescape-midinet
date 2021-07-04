@@ -4,6 +4,29 @@ This project is heavily inspired by the works of [Music Transformer](https://mag
 
 Inside the inner workings of this model is an attention-based neural network that utilizes the memory efficient relative attention algorithm described by authors of Music Transformer. If you are interested in learning more about this, be sure to look at the [Music Transformer paper](https://arxiv.org/abs/1809.04281).
 
+## Table of Contents
+* [Music Samples](#music-samples)
+* [Running on Google Colab](#running-on-google-colab)
+* [Installing Dpendencies](#installing-dependencies)
+* [Trained Model](#trained-model)
+* [Downloading the Trained Model](#downloading-the-trained-model)
+* [Graphs](#graphs)
+* [Downloading the Datasets](#downloading-the-datasets)
+* [Preprocessing the Datasets](#preprocessing-the-datasets)
+* [Adjusting the Parameters](#adjusting-the-parameters)
+* [Training](#training)
+* [Inference](#inference)
+* [Dependencies](#dependencies)
+* [Acknowledgements](#acknowledgements)
+* [Licensing](#licensing)
+
+## Music Samples
+
+A playlist containing some of the best music samples generated from the model can be found on [Soundcloud](https://soundcloud.com/kipwisp/sets/midinet-music-generator).
+
+Though the model is not perfect and may run into issues of incoherency, repetition, and silence at times - it appears to be quite capable of replicating the general theme of the sample seed it is given while retaining musical structure.
+
+
 ## Running on Google Colab
 
 This model can be ran on Google Colab. To do so, simply upload the repository to your Google Drive. Then
@@ -44,12 +67,6 @@ If you wish to skip the training process, then the trained model can be download
 Make sure to change `parameters.json` to match the trained model parameters specified above if you are using this model for inference.
 
 *(note: in order to use the model for inference, you still must download and preprocess a dataset)*
-
-## Music Samples
-
-A playlist containing some of the best music samples generated from the trained model can be found on [Soundcloud](https://soundcloud.com/kipwisp/sets/midinet-music-generator).
-
-Though the model is not perfect and may run into issues of incoherency, repetition, and silence at times - it appears to be quite capable of replicating the general theme of the sample seed it is given while retaining musical structure.
 
 ## Graphs
 These graphs show the results from training the model for 250 epochs on the Lahk Dataset.
